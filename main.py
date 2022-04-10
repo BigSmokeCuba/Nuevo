@@ -22,6 +22,11 @@ import ProxyCloud
 import socket
 import tlmedia
 import S5Crypto
+# .env vars
+
+from config import (HOST) 
+
+   
 
 
 
