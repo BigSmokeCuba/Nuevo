@@ -53,7 +53,8 @@ class MoodleClient(object):
         if host!='':
             self.path = host
         self.userdata = None
-        self.userid = ''
+        self.userid = '' 
+        self.moodle_id = moodle_id
         self.repo_id = repo_id
         self.sesskey = ''
         self.proxy = None
@@ -416,7 +417,7 @@ class MoodleClient(object):
             return None,data
 
     def upload_file_draft(self,file,progressfunc=None,args=(),tokenize=False):
-            file_edit = f'{self.path}user/edit.php?id=10217&returnto=profile'
+            file_edit = f'{self.path}user/edit.php?id=('moodle_id')&returnto=profile'
            
             resp = self.session.get(file_edit,proxies=self.proxy)
             soup = BeautifulSoup(resp.text, 'html.parser')
@@ -437,6 +438,7 @@ class MoodleClient(object):
                 'license':(None,'allrightsreserved'),
                 'itemid':(None,query['itemid']),
                 'repo_id':(None,str(self.repo_id)),
+                'moodle_id':(None,str(self.moodle_id)),
                 'p':(None,''),
                 'page':(None,''),
                 'env':(None,query['env']),
