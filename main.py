@@ -364,6 +364,33 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /host moodlehost❌')
             return
+        if '/moodleid' in msgText:
+
+            try:
+
+                cmd = str(msgText).split(' ',2)
+
+                moodleid = int(cmd[1])
+
+                getUser = user_info
+
+                if getUser:
+
+                    getUser['moodle_id'] = moodleid
+
+                    jdb.save_data_user(username,getUser)
+
+                    jdb.save()
+
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+
+                    bot.sendMessage(update.message.chat.id,statInfo)
+
+            except:
+
+                bot.sendMessage(update.message.chat.id,'❌Error en el comando /Moodle id❌')
+
+            return
         if '/repoid' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
