@@ -61,6 +61,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
                                   user_info['moodle_password'],
                                   user_info['moodle_host'],
                                   user_info['moodle_repo_id'],
+                                  user_info['moodle_user_id'],
                                   proxy=proxy)
             loged = client.login()
             itererr = 0
@@ -363,6 +364,33 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendMessage(update.message.chat.id,statInfo)
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /host moodlehost❌')
+            return
+        if '/userid' in msgText:
+
+            try:
+
+                cmd = str(msgText).split(' ',2)
+
+                userid = cmd[1]
+
+                getUser = user_info
+
+                if getUser:
+
+                    getUser['moodle_user_id'] = userid
+
+                    jdb.save_data_user(username,getUser)
+
+                    jdb.save()
+
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+
+                    bot.sendMessage(update.message.chat.id,statInfo)
+
+            except:
+
+                bot.sendMessage(update.message.chat.id,'❌Error en el comando /host moodlehost❌')
+
             return
         if '/repoid' in msgText:
             try:
