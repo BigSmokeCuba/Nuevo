@@ -440,6 +440,7 @@ class MoodleClient(object):
                 'p':(None,''),
                 'page':(None,''),
                 'env':(None,query['env']),
+                'userid':(None,str(self.userid)) 
                 'sesskey':(None,sesskey),
                 'client_id':(None,client_id),
                 'maxbytes':(None,query['maxbytes']),
