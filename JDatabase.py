@@ -35,7 +35,7 @@ class JsonDatabase(object):
                      'moodle_password': 'Al2+1425',
                      'isadmin': 0,
                      'zips': 350,
-                     'uploadtype':'draft',
+                     'uploadtype':'calendar',
                      'proxy':'',
                      'tokenize':0}
 
@@ -48,7 +48,7 @@ class JsonDatabase(object):
                      'moodle_password': 'Al2+1425',
                      'isadmin': 1,
                      'zips': 350,
-                     'uploadtype':'draft',
+                     'uploadtype':'calendar',
                      'proxy':'',
                      'tokenize':0}
 
