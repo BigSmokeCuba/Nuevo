@@ -50,7 +50,7 @@ class MoodleClient(object):
         self.password = passw
         self.session = requests.Session()
         self.path = 'https://moodle.uclv.edu.cu/'
-        self.host_tokenize = 'https://da.gd/'
+        self.host_tokenize = 'https://moodle.uclv.edu.cu/'
         if host!='':
             self.path = host
         self.userdata = None
